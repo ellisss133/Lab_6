@@ -6,6 +6,35 @@ using namespace std;
 // Zi=Xi * Yi , i=1,2,3…n
 // Найти сумму положительных элементов массива X, сумму положительных элементов массива Y, и сумму положительных элементов массива Z. Исходные данные взять самостоятельно.
 
+void fill_arr(float arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+}
+
+float el_sum(float arr[], int n)
+{
+    float res = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] >= 0)
+        {
+            res += arr[i];
+        }
+    }
+    return res;
+}
+
+void mult_arr(float arr1[], float arr2[], float arr_res[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        arr_res[i] = arr1[i] * arr2[i];
+    }
+}
+
 int main()
 {
     setlocale(LC_ALL, "RU");
@@ -20,52 +49,22 @@ int main()
     float array_z[len];
 
     cout << "начните вводить элементы первого массива: " << endl;
-    for (int i = 0; i < len; i++)
-    {
-        cin >> array_x[i];
-    }
+    fill_arr(array_x, len);
 
     cout << "начните вводить элементы второго массива: " << endl;
-    for (int i = 0; i < len; i++)
-    {
-        cin >> array_y[i];
-    }
+    fill_arr(array_y, len);
 
     // вычисление произведения массивов
-    for (int i = 0; i < len; i++)
-    {
-        array_z[i] = array_x[i] * array_y[i];
-    }
+    mult_arr(array_x, array_y, array_z, len);
 
     // нахождение суммы положительных элементов массива x
-    float res_x = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if (array_x[i] >= 0)
-        {
-            res_x += array_x[i];
-        }
-    }
+    float res_x = el_sum(array_x, len);
 
     // нахождение суммы положительных элементов массива y
-    float res_y = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if (array_y[i] >= 0)
-        {
-            res_y += array_y[i];
-        }
-    }
+    float res_y = el_sum(array_y, len);
 
     // нахождение суммы положительных элементов массива z
-    float res_z = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if (array_z[i] >= 0)
-        {
-            res_z += array_z[i];
-        }
-    }
+    float res_z = el_sum(array_z, len);
 
     // вывод результата
     cout << "X: " << res_x << endl
